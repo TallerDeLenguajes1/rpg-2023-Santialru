@@ -11,9 +11,10 @@ LinkedList<Perso> listaPersonajes = new LinkedList<Perso>();
             {
                 Console.WriteLine($"Ingrese los datos del personaje #{i+1}");
 
-                Perso personaje = CrearPersonaje();
+                Perso nuevoPersonaje = new Perso();
+                nuevoPersonaje.CrearPersonaje();
 
                 // Agregar el personaje a la lista enlazada
-                listaPersonajes.AddLast(personaje);
+                listaPersonajes.AddLast(nuevoPersonaje);
             }
 
