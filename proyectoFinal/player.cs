@@ -1,4 +1,8 @@
 using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+// using Newtonsoft.Json;
+using System.IO;
 
 namespace Personaje
 {
@@ -56,6 +60,32 @@ namespace Personaje
             pj.Salud = random.Next(1, 100);
 
             return pj;
+        }
+    }
+
+    public class PersonajesJson
+    {
+        public string CrearArchivoJson(Perso personaje)
+        {
+            return JsonSerializer.Serialize(personaje);
+            
+        }
+
+        public void GuardarPersonajes(string nombreArchivo, string formato, Perso personaje)
+        {
+            string persStr = CrearArchivoJson(personaje);
+            FileStream MiArchivo = new FileStream(nombreArchivo + formato, FileMode.Create);
+            using (StreamWriter StrWriter = new StreamWriter(MiArchivo))
+            {
+                StrWriter.WriteLine("{0}", persStr);
+
+                StrWriter.Close();
+            }
+        }
+
+        public void LeerPersonajes(string nombreArchivo)
+        {
+            
         }
     }
 }

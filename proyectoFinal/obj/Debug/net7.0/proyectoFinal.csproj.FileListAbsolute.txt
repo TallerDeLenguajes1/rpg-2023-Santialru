@@ -1,0 +1,15 @@
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\bin\Debug\net7.0\proyectoFinal.exe
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\bin\Debug\net7.0\proyectoFinal.deps.json
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\bin\Debug\net7.0\proyectoFinal.runtimeconfig.json
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\bin\Debug\net7.0\proyectoFinal.dll
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\bin\Debug\net7.0\proyectoFinal.pdb
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\obj\Debug\net7.0\proyectoFinal.csproj.AssemblyReference.cache
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\obj\Debug\net7.0\proyectoFinal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\obj\Debug\net7.0\proyectoFinal.AssemblyInfoInputs.cache
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\obj\Debug\net7.0\proyectoFinal.AssemblyInfo.cs
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\obj\Debug\net7.0\proyectoFinal.csproj.CoreCompileInputs.cache
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\obj\Debug\net7.0\proyectoFinal.dll
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\obj\Debug\net7.0\refint\proyectoFinal.dll
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\obj\Debug\net7.0\proyectoFinal.pdb
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\obj\Debug\net7.0\proyectoFinal.genruntimeconfig.cache
+C:\Users\santi\OneDrive\Escritorio\proyetoTaller1\rpg-2023-Santialru\proyectoFinal\obj\Debug\net7.0\ref\proyectoFinal.dll

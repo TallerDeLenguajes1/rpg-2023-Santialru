@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cuent\\OneDrive\\Escritorio\\PF-taller1\\proyectoFinal\\proyectoFinal.csproj": {}
+    "C:\\Users\\santi\\OneDrive\\Escritorio\\proyetoTaller1\\rpg-2023-Santialru\\proyectoFinal\\proyectoFinal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cuent\\OneDrive\\Escritorio\\PF-taller1\\proyectoFinal\\proyectoFinal.csproj": {
+    "C:\\Users\\santi\\OneDrive\\Escritorio\\proyetoTaller1\\rpg-2023-Santialru\\proyectoFinal\\proyectoFinal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cuent\\OneDrive\\Escritorio\\PF-taller1\\proyectoFinal\\proyectoFinal.csproj",
+        "projectUniqueName": "C:\\Users\\santi\\OneDrive\\Escritorio\\proyetoTaller1\\rpg-2023-Santialru\\proyectoFinal\\proyectoFinal.csproj",
         "projectName": "proyectoFinal",
-        "projectPath": "C:\\Users\\cuent\\OneDrive\\Escritorio\\PF-taller1\\proyectoFinal\\proyectoFinal.csproj",
-        "packagesPath": "C:\\Users\\cuent\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cuent\\OneDrive\\Escritorio\\PF-taller1\\proyectoFinal\\obj\\",
+        "projectPath": "C:\\Users\\santi\\OneDrive\\Escritorio\\proyetoTaller1\\rpg-2023-Santialru\\proyectoFinal\\proyectoFinal.csproj",
+        "packagesPath": "C:\\Users\\santi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\santi\\OneDrive\\Escritorio\\proyetoTaller1\\rpg-2023-Santialru\\proyectoFinal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\cuent\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\santi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
