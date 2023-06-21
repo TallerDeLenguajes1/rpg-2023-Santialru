@@ -6,6 +6,37 @@ using System.IO;
 
 namespace Personaje
 {
+    public enum tipoPersonajes
+    {
+        Humano,
+        Duende, 
+        Hobbit, 
+        Brujo, 
+        Mago,
+        Alien
+    }
+    public enum nombresPersonajes
+    {
+        Homero, 
+        Bart,
+        Lisa, 
+        Maggie,
+        Marge, 
+        Flanders, 
+        Abuelo, 
+        SrBurns,
+        Apu
+    }
+    public enum apodos
+    {
+        aaaa,
+        bbbb,
+        cccc,
+        dddd,
+        eeee,
+        ffff
+
+    }
     public class Perso
     {
         public string tipo;
@@ -44,9 +75,9 @@ namespace Personaje
             string[] nomb = { "santi", "aaa", "bbb" };
             string[] apo = { "sss", "vvvv", "uuu" };
 
-            pj.Tipo = tip[random.Next(0, 3)];
-            pj.Nombre = nomb[random.Next(0, 3)];
-            pj.Apodo = apo[random.Next(0, 3)];
+            pj.Tipo = Enum.GetName(typeof(tipoPersonajes), random.Next(1, Enum.GetNames(typeof(tipoPersonajes)).Length));
+            pj.Nombre = Enum.GetName(typeof(nombresPersonajes), random.Next(1, Enum.GetNames(typeof(nombresPersonajes)).Length));
+            pj.Apodo = Enum.GetName(typeof(apodos), random.Next(1, Enum.GetNames(typeof(apodos)).Length));
             int anio = random.Next(1723, 2023);
             int mes = random.Next(1, 12);
             int dia = random.Next(1, 30);
@@ -83,9 +114,14 @@ namespace Personaje
             }
         }
 
-        public void LeerPersonajes(string nombreArchivo)
+        public List<Perso> LeerPersonajes(string nombreArchivo)
         {
-            
+            string json = File.ReadAllText(nombreArchivo);
+            List<Perso> personajes = JsonSerializer.Deserialize<List<Perso>>(nombreArchivo);
+            return personajes;
         }
+
+        
+        
     }
 }

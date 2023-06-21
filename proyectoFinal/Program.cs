@@ -20,17 +20,18 @@ for (int i = 0; i < cantidadPersonajes; i++)
 
 foreach (Perso item in listaPersonajes)
 {
-    Console.WriteLine(item.Nombre);
-    Console.WriteLine(item.Apodo);
-    Console.WriteLine(item.tipo);
-    Console.WriteLine(item.Fecha);
-    Console.Write(item.Edad);
-    Console.Write(item.Velocidad);
-    Console.Write(item.Destreza);
-    Console.Write(item.Fuerza);
-    Console.Write(item.Nivel);
-    Console.Write(item.Armadura);
-    Console.Write(item.Salud);
-
+    
+    Console.WriteLine("\n-------Personaje N° -------");
+    Console.WriteLine("Nombre: " + item.Nombre);
+    Console.WriteLine("Apodo: " + item.Apodo);
+    Console.WriteLine("Tipo: " + item.tipo);
+    Console.WriteLine("Fecha de nacimiento: " + item.Fecha);
+    Console.Write("Edad: " + item.Edad);
+    Console.Write("\nVelocidad: " + item.Velocidad);
+    Console.Write("\nDestreza: " + item.Destreza);
+    Console.Write("\nFuerza:" + item.Fuerza);
+    Console.Write("\nNivel: " + item.Nivel);
+    Console.Write("\nArmadura: " + item.Armadura);
+    Console.Write("\nSalud: " + item.Salud);
     
 }
