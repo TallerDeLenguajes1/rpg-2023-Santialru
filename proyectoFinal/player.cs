@@ -31,27 +31,7 @@ namespace Personaje
         Steel,
         Water
     }
-    // public enum nombresPersonajes
-    // {
-    //     Homero, 
-    //     Bart,
-    //     Lisa, 
-    //     Maggie,
-    //     Marge, 
-    //     Flanders, 
-    //     Abuelo, 
-    //     SrBurns,
-    //     Apu
-    // }
-    // public enum apodos
-    // {
-    //     aaaa,
-    //     bbbb,
-    //     cccc,
-    //     dddd,
-    //     eeee,
-    //     ffff
-    // }
+    
     public class Perso
     {
         private string tipo;
@@ -89,65 +69,50 @@ namespace Personaje
             Perso pj = new Perso();
             // Pokemones poke = new Pokemones();
             
-            Pokemones Get(){
-            var url =$"https://pokeapi.co/api/v2/pokemon?limit=50&offset=0";
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-            request.ContentType = "application/json";
-            request.Accept = "application/json";
-            try
+            Pokemones Get()
             {
-                using (WebResponse response = request.GetResponse())
+                var url =$"https://pokeapi.co/api/v2/pokemon?limit=50&offset=0";
+                var request = (HttpWebRequest)WebRequest.Create(url);
+                request.Method = "GET";
+                request.ContentType = "application/json";
+                request.Accept = "application/json";
+                try
                 {
-                    using (Stream strReader = response.GetResponseStream())
+                    using (WebResponse response = request.GetResponse())
                     {
-                        if (strReader == null){
-                            Console.WriteLine("error de lectura stream reader");
-                            return null;
-                        }
-                        using (StreamReader objReader = new StreamReader(strReader))
+                        using (Stream strReader = response.GetResponseStream())
                         {
-                            string responseBody = objReader.ReadToEnd();
-                            
-                            Pokemones poke = JsonSerializer.Deserialize<Pokemones>(responseBody);
-
-                            // foreach (Result pokemones in poke.results)
-                            // {
-                            //     Console.WriteLine("name:"+pokemones.Nombre);
-                            // }
-                                return poke;
+                            if (strReader == null){
+                                Console.WriteLine("error de lectura stream reader");
+                                return null;
+                            }
+                            using (StreamReader objReader = new StreamReader(strReader))
+                            {
+                                string responseBody = objReader.ReadToEnd();
+                                
+                                Pokemones poke = JsonSerializer.Deserialize<Pokemones>(responseBody);
+                                    return poke;
+                            }
                         }
                     }
                 }
+                catch (System.Exception)
+                {
+                    
+                    throw;
+                } 
             }
-            catch (System.Exception)
-            {
-                
-                throw;
-            }
-            
-        }
 
-        
-
-            
-            int i = 0;
+            int z = 0;
             string[] nombresPersonajes = new string[50];
             foreach (Result pokemones in Get().results)
             {
-                
-                nombresPersonajes[i] = pokemones.Nombre;
-                i++;
+                nombresPersonajes[z] = pokemones.Nombre;
+                z++;
             }
-            
-            string[] tip = { "uno", "dos", "tres" };
-            string[] nomb = { "santi", "aaa", "bbb" };
-            string[] apo = { "sss", "vvvv", "uuu" };
 
             pj.Tipo = Enum.GetName(typeof(tipoPersonajes), random.Next(1, Enum.GetNames(typeof(tipoPersonajes)).Length));
             pj.Nombre = nombresPersonajes[random.Next(0,49)];
-            // pj.Nombre = Enum.GetName(typeof(nombresPersonajes), random.Next(1, Enum.GetNames(typeof(nombresPersonajes)).Length));
-            // pj.Apodo = Enum.GetName(typeof(apodos), random.Next(1, Enum.GetNames(typeof(apodos)).Length));
             int anio = random.Next(1723, 2023);
             int mes = random.Next(1, 12);
             int dia = random.Next(1, 30);
@@ -158,7 +123,7 @@ namespace Personaje
             pj.Destreza = random.Next(1, 5);
             pj.Fuerza = random.Next(1, 10);
             pj.Armadura = random.Next(1, 10);
-            pj.Salud = random.Next(1, 200);
+            pj.Salud = random.Next(20, 100);
             pj.SaludInicial = pj.Salud;
             return pj;
         }
@@ -175,7 +140,6 @@ namespace Personaje
 
                 Console.WriteLine("\n-------Personaje N°"+ indi +"-------");
                 Console.WriteLine("Nombre: " + item.Nombre);
-                // Console.WriteLine("Apodo: " + item.Apodo);
                 Console.WriteLine("Tipo: " + item.Tipo);
                 Console.WriteLine("Fecha de nacimiento: " + item.Fecha);
                 Console.Write("Edad: " + item.Edad);

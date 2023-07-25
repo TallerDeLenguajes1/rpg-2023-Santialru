@@ -6,16 +6,15 @@ namespace usaJson
 {
      public class PersonajesJson
     {
-        public string CrearArchivoJson(Perso personaje)
+        public string CrearArchivoJson(List <Perso> ListaDepersonajes)
         {
-            return JsonSerializer.Serialize(personaje);
-            
+            return JsonSerializer.Serialize(ListaDepersonajes);
         }
 
-        public void GuardarPersonajes(string nombreArchivo, string formato, Perso personaje)
+        public void GuardarPersonajes(string nombreArchivo, List <Perso> ListaDepersonajes)
         {
-            string persStr = CrearArchivoJson(personaje);
-            FileStream MiArchivo = new FileStream(nombreArchivo + formato, FileMode.Create);
+            string persStr = CrearArchivoJson(ListaDepersonajes);
+            FileStream MiArchivo = new FileStream(nombreArchivo, FileMode.OpenOrCreate);
             using (StreamWriter StrWriter = new StreamWriter(MiArchivo))
             {
                 StrWriter.WriteLine("{0}", persStr);
@@ -33,7 +32,7 @@ namespace usaJson
 
         public bool Existe(string nombreArchivo)
         {
-            if (File.Exists(nombreArchivo+".json"))
+            if (File.Exists(nombreArchivo))
             {
                 return (new FileInfo(nombreArchivo).Length > 0);
             }else
@@ -41,6 +40,7 @@ namespace usaJson
             return false;
             }
         }
+
         
     }
 }

@@ -11,8 +11,30 @@ using System.Collections.Generic;
 
 internal class Program
 {
+    
     private static void Main(string[] args)
     {
+        void MostrarCampeones(List<Perso> ListaCampeones)
+        {
+            var selec = new SeleccionDePersonajes();
+            Console.WriteLine("Mostrar Lista de Campeones Pokemon (1:si / 0:no)");
+            int mostCamp;
+            int.TryParse(Console.ReadLine(), out mostCamp);
+            if (mostCamp == 1)
+            {
+                foreach (Perso Campeon in ListaCampeones)
+                {
+                    selec.MostrarPersonajes(ListaCampeones);
+                }   
+            }
+            else if (mostCamp != 1 && mostCamp != 0);
+            {
+                Console.WriteLine("No se ha seleccionado una opcion valida, intentelo nuevamente");
+                MostrarCampeones(ListaCampeones);
+            }
+        }
+
+
         void JugarMultiplayer()
         {
                         Console.WriteLine(@"
@@ -40,9 +62,9 @@ internal class Program
                     List<Perso> listaPersonajes = new List<Perso>();
                     var persjson = new PersonajesJson();
                     var selec = new SeleccionDePersonajes();
-
-                    string nombreArchivo = "personajes";
                     PersonajesJson nuevoJson = new PersonajesJson();
+                    string nombreArchivo = "personajes.json";
+
                     if (nuevoJson.Existe(nombreArchivo))
                     {
                         listaPersonajes = persjson.LeerPersonajes(nombreArchivo);
@@ -56,8 +78,8 @@ internal class Program
                             var fabrica = new FabricaDePersonajes();
                             nuevoPersonaje = fabrica.CrearPersonaje();
                             listaPersonajes.Add(nuevoPersonaje);
-                            persjson.GuardarPersonajes(nombreArchivo, ".json", nuevoPersonaje);
                         }
+                        persjson.GuardarPersonajes(nombreArchivo, listaPersonajes);
                         selec.MostrarPersonajes(listaPersonajes);
                         
                     }
@@ -75,9 +97,6 @@ internal class Program
             █▀▀ █░░ █ ░░█ ▄▀█   █▀█ █░░ ▄▀█ █▄█ █▀▀ █▀█   ▀█
             ██▄ █▄▄ █ █▄█ █▀█   █▀▀ █▄▄ █▀█ ░█░ ██▄ █▀▄   █▄");
                     player2 = selec.Eleccion(listaPersonajes);
-
-                
-
                     do 
                     {
                         Console.WriteLine("-------NUEVO TURNO-------");
@@ -97,52 +116,64 @@ internal class Program
                         }
                             
                     }while (player1.Salud > 0 && player2.Salud > 0);
+                    
+
+                    List<Perso> listaGanadores = new List<Perso>();
                     if(player2.Salud <= 0)
                     {
-                        Console.WriteLine(@"
-            █▀▀ ▄▀█ █▄░█ ▄▀█ █▄░█ ▄▀█ █▀▄ █▀█ █▀█   █▀█ █░░ ▄▀█ █▄█ █▀▀ █▀█   ▄█
-            █▄█ █▀█ █░▀█ █▀█ █░▀█ █▀█ █▄▀ █▄█ █▀▄   █▀▀ █▄▄ █▀█ ░█░ ██▄ █▀▄   ░█");
+            
+            
+                                    Console.WriteLine(@"
+                        █▀▀ ▄▀█ █▄░█ ▄▀█ █▄░█ ▄▀█ █▀▄ █▀█ █▀█   █▀█ █░░ ▄▀█ █▄█ █▀▀ █▀█   ▄█
+                        █▄█ █▀█ █░▀█ █▀█ █░▀█ █▀█ █▄▀ █▄█ █▀▄   █▀▀ █▄▄ █▀█ ░█░ ██▄ █▀▄   ░█");
+
+
                         Console.WriteLine("Datos del ganador:");
                         selec.ReadOnlyOne(player1);
-                        List<Perso> listaGanadores = new List<Perso>();
-                        string ArchivoGanadores = "ganadores";
+                        string ArchivoGanadores = "ganadores.json";
                         if (nuevoJson.Existe(ArchivoGanadores))
                         {
                             listaGanadores = persjson.LeerPersonajes(ArchivoGanadores);
                             listaGanadores.Add(player1);
-                            persjson.GuardarPersonajes(ArchivoGanadores, "json", player1);
+                            persjson.GuardarPersonajes(ArchivoGanadores, listaGanadores);
                         }
                         else
                         {
                             listaGanadores.Add(player1);
-                            persjson.GuardarPersonajes(ArchivoGanadores, "json", player1);
+                            persjson.GuardarPersonajes(ArchivoGanadores, listaGanadores);
                         }
                     }
+                    
                     else if(player1.Salud <=0)
                     {
-                        Console.WriteLine(@"
-            █▀▀ ▄▀█ █▄░█ ▄▀█ █▄░█ ▄▀█ █▀▄ █▀█ █▀█   █▀█ █░░ ▄▀█ █▄█ █▀▀ █▀█   ▀█
-            █▄█ █▀█ █░▀█ █▀█ █░▀█ █▀█ █▄▀ █▄█ █▀▄   █▀▀ █▄▄ █▀█ ░█░ ██▄ █▀▄   █▄");
+
+
+                                    Console.WriteLine(@"
+                        █▀▀ ▄▀█ █▄░█ ▄▀█ █▄░█ ▄▀█ █▀▄ █▀█ █▀█   █▀█ █░░ ▄▀█ █▄█ █▀▀ █▀█   ▀█
+                        █▄█ █▀█ █░▀█ █▀█ █░▀█ █▀█ █▄▀ █▄█ █▀▄   █▀▀ █▄▄ █▀█ ░█░ ██▄ █▀▄   █▄");
+                        
+                        
+                        
                         Console.WriteLine("---------Datos del ganador---------");
                         selec.ReadOnlyOne(player2);
-                        List<Perso> listaGanadores = new List<Perso>();
-                        string ArchivoGanadores = "ganadores";
+                        string ArchivoGanadores = "ganadores.json";
                         if (nuevoJson.Existe(ArchivoGanadores))
                         {
                             listaGanadores = persjson.LeerPersonajes(ArchivoGanadores);
-                            listaGanadores.Add(player1);
-                            persjson.GuardarPersonajes(ArchivoGanadores, "json", player1);
+                            listaGanadores.Add(player2);
+                            persjson.GuardarPersonajes(ArchivoGanadores, listaGanadores);
                         }
                         else
                         {
-                            listaGanadores.Add(player1);
-                            persjson.GuardarPersonajes(ArchivoGanadores, "json", player1);
+                            listaGanadores.Add(player2);
+                            persjson.GuardarPersonajes(ArchivoGanadores, listaGanadores);
                         }
                     }
                     else
                     {
                         Console.WriteLine("ERROR");
-                    }        
+                    }
+                    MostrarCampeones(listaGanadores);
         }
         void JugarDeNuevoMultiplayer()
         {
