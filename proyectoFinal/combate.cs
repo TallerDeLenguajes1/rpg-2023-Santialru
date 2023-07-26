@@ -35,7 +35,7 @@ namespace combate
             {
                 case 'A' or 'a':
                 p2.Salud -= DanioProvocado;
-                Console.WriteLine(p1.Nombre+"ha ATACADO");
+                Console.WriteLine(p1.Nombre+" ha ATACADO");
                 Console.WriteLine("DAÑO PROVOCADO:"+DanioProvocado);
                 break;
 

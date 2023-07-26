@@ -14,31 +14,18 @@ internal class Program
     
     private static void Main(string[] args)
     {
-        void MostrarCampeones(List<Perso> ListaCampeones)
+        void MostrarCampeones(List<Perso> ListaCampeones, int mostCamp)
         {
             var selec = new SeleccionDePersonajes();
-            Console.WriteLine("Mostrar Lista de Campeones Pokemon (1:si / 0:no)");
-            int mostCamp;
-            int.TryParse(Console.ReadLine(), out mostCamp);
-            if (mostCamp == 1)
-            {
-                foreach (Perso Campeon in ListaCampeones)
-                {
-                    selec.MostrarPersonajes(ListaCampeones);
-                }   
-            }
-            else if (mostCamp != 1 && mostCamp != 0);
-            {
-                Console.WriteLine("No se ha seleccionado una opcion valida, intentelo nuevamente");
-                MostrarCampeones(ListaCampeones);
-            }
+            selec.MostrarPersonajes(ListaCampeones);
+             
         }
 
 
         void JugarMultiplayer()
         {
                         Console.WriteLine(@"
-            ██████╗  ██████╗ ██╗  ██╗███████╗███╗   ███╗ ██████╗ ███╗   ██╗
+             ██████╗  ██████╗ ██╗  ██╗███████╗███╗   ███╗ ██████╗ ███╗   ██╗
             ██╔═══██╗██╔═══██╗██║ ██╔╝██╔════╝████╗ ████║██╔═══██╗████╗  ██║
             ██║   ██║██║   ██║█████╔╝ █████╗  ██╔████╔██║██║   ██║██╔██╗ ██║
             ██║   ██║██║   ██║██╔═██╗ ██╔══╝  ██║╚██╔╝██║██║   ██║██║╚██╗██║
@@ -59,13 +46,15 @@ internal class Program
             █▀▀ ██▄ █▀▄ ▄█ █▄█ █░▀█ █▀█ █▄█ ██▄ ▄█ ▄
             ");
 
-                    List<Perso> listaPersonajes = new List<Perso>();
+                    var listaPersonajes = new List<Perso>();
                     var persjson = new PersonajesJson();
                     var selec = new SeleccionDePersonajes();
-                    PersonajesJson nuevoJson = new PersonajesJson();
+                    var player1 = new Perso();
+                    var player2 = new Perso();
+                    var pelea = new caractPelea();
                     string nombreArchivo = "personajes.json";
 
-                    if (nuevoJson.Existe(nombreArchivo))
+                    if (persjson.Existe(nombreArchivo))
                     {
                         listaPersonajes = persjson.LeerPersonajes(nombreArchivo);
                         selec.MostrarPersonajes(listaPersonajes);
@@ -83,20 +72,27 @@ internal class Program
                         selec.MostrarPersonajes(listaPersonajes);
                         
                     }
-                    
 
-                    var player1 = new Perso();
-                    var player2 = new Perso();
-                    var pelea = new caractPelea();
+
+                    void EleccionDePj()
+                    {
+                                Console.WriteLine(@"
+                        █▀▀ █░░ █ ░░█ ▄▀█   █▀█ █░░ ▄▀█ █▄█ █▀▀ █▀█   ▄█
+                        ██▄ █▄▄ █ █▄█ █▀█   █▀▀ █▄▄ █▀█ ░█░ ██▄ █▀▄   ░█ ");
+                                player1 = selec.Eleccion(listaPersonajes);
+                                Console.WriteLine(@"
+                        █▀▀ █░░ █ ░░█ ▄▀█   █▀█ █░░ ▄▀█ █▄█ █▀▀ █▀█   ▀█
+                        ██▄ █▄▄ █ █▄█ █▀█   █▀▀ █▄▄ █▀█ ░█░ ██▄ █▀▄   █▄");
+                                player2 = selec.Eleccion(listaPersonajes);
+
+                        if (player1 == player2)
+                        {
+                            Console.WriteLine("¡¡¡ERROR!!!-Intentelo nuevamente...");
+                            EleccionDePj();
+                        }
+                    }
+                    EleccionDePj();
                     
-                    Console.WriteLine(@"
-            █▀▀ █░░ █ ░░█ ▄▀█   █▀█ █░░ ▄▀█ █▄█ █▀▀ █▀█   ▄█
-            ██▄ █▄▄ █ █▄█ █▀█   █▀▀ █▄▄ █▀█ ░█░ ██▄ █▀▄   ░█ ");
-                    player1 = selec.Eleccion(listaPersonajes);
-                    Console.WriteLine(@"
-            █▀▀ █░░ █ ░░█ ▄▀█   █▀█ █░░ ▄▀█ █▄█ █▀▀ █▀█   ▀█
-            ██▄ █▄▄ █ █▄█ █▀█   █▀▀ █▄▄ █▀█ ░█░ ██▄ █▀▄   █▄");
-                    player2 = selec.Eleccion(listaPersonajes);
                     do 
                     {
                         Console.WriteLine("-------NUEVO TURNO-------");
@@ -131,11 +127,11 @@ internal class Program
                         Console.WriteLine("Datos del ganador:");
                         selec.ReadOnlyOne(player1);
                         string ArchivoGanadores = "ganadores.json";
-                        if (nuevoJson.Existe(ArchivoGanadores))
+                        if (persjson.Existe(ArchivoGanadores))
                         {
-                            listaGanadores = persjson.LeerPersonajes(ArchivoGanadores);
                             listaGanadores.Add(player1);
                             persjson.GuardarPersonajes(ArchivoGanadores, listaGanadores);
+                            listaGanadores = persjson.LeerPersonajes(ArchivoGanadores);
                         }
                         else
                         {
@@ -157,7 +153,7 @@ internal class Program
                         Console.WriteLine("---------Datos del ganador---------");
                         selec.ReadOnlyOne(player2);
                         string ArchivoGanadores = "ganadores.json";
-                        if (nuevoJson.Existe(ArchivoGanadores))
+                        if (persjson.Existe(ArchivoGanadores))
                         {
                             listaGanadores = persjson.LeerPersonajes(ArchivoGanadores);
                             listaGanadores.Add(player2);
@@ -173,12 +169,30 @@ internal class Program
                     {
                         Console.WriteLine("ERROR");
                     }
-                    MostrarCampeones(listaGanadores);
+
+
+                    Console.WriteLine("\nMostrar Lista de Campeones Pokemon (1:si / 0:no)");
+                    int mostCamp;
+                    int.TryParse(Console.ReadLine(), out mostCamp);
+                    
+                    if (mostCamp == 1)
+                    {
+                         MostrarCampeones(listaGanadores, mostCamp);
+                    }
+                    else if (mostCamp != 1 || mostCamp != 0)
+                    {
+                        Console.WriteLine("No se ha seleccionado una opcion valida, intentelo nuevamente");
+                        int.TryParse(Console.ReadLine(), out mostCamp);
+                        MostrarCampeones(listaGanadores, mostCamp);
+                    }
+                    JugarDeNuevoMultiplayer();
+
         }
         void JugarDeNuevoMultiplayer()
         {
             Console.WriteLine("\nJUGAR DE NUEVO? (1:SI / 0:NO)");
-            int deNuevo = int.Parse(Console.ReadLine());
+            int deNuevo;
+            int.TryParse(Console.ReadLine(), out deNuevo);
             if (deNuevo == 1)
             {
                 JugarMultiplayer();
@@ -194,8 +208,7 @@ internal class Program
                 JugarDeNuevoMultiplayer();
             }
         }
-
+        
         JugarMultiplayer();
-        JugarDeNuevoMultiplayer();
     }
 }
