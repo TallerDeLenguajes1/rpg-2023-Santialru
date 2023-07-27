@@ -171,7 +171,7 @@ internal class Program
                     }
 
 
-                    Console.WriteLine("\nMostrar Lista de Campeones Pokemon (1:si / 0:no)");
+                    Console.WriteLine("\nMostrar Lista de Campeones Pokemon (1:si / 2:no)");
                     int mostCamp;
                     int.TryParse(Console.ReadLine(), out mostCamp);
                     
@@ -179,7 +179,7 @@ internal class Program
                     {
                          MostrarCampeones(listaGanadores, mostCamp);
                     }
-                    else if (mostCamp != 1 || mostCamp != 0)
+                    else if (mostCamp != 1 && mostCamp != 2)
                     {
                         Console.WriteLine("No se ha seleccionado una opcion valida, intentelo nuevamente");
                         int.TryParse(Console.ReadLine(), out mostCamp);
@@ -190,13 +190,13 @@ internal class Program
         }
         void JugarDeNuevoMultiplayer()
         {
-            Console.WriteLine("\nJUGAR DE NUEVO? (1:SI / 0:NO)");
+            Console.WriteLine("\nJUGAR DE NUEVO? (1:SI / 2:NO)");
             int deNuevo;
             int.TryParse(Console.ReadLine(), out deNuevo);
             if (deNuevo == 1)
             {
                 JugarMultiplayer();
-            }else if (deNuevo == 0)
+            }else if (deNuevo == 2)
             {
                 Console.WriteLine(@"
                         █▀▀ █ █▄░█
