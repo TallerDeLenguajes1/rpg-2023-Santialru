@@ -131,7 +131,7 @@ namespace Personaje
     {
         public void MostrarPersonajes(List<Perso> ListaDePersonajes)
         {
-            int indi = 0;
+            int indi = 1;
             foreach (Perso item in ListaDePersonajes)
             {
 
@@ -170,31 +170,31 @@ namespace Personaje
             switch (seleccionado)
             {
                 case 1:
-                    return ListaDePersonajes[1];
+                    return ListaDePersonajes[0];
 
                 case 2:
-                    return ListaDePersonajes[2];
+                    return ListaDePersonajes[1];
 
                 case 3:
-                    return ListaDePersonajes[3];
+                    return ListaDePersonajes[2];
 
                 case 4:
-                    return ListaDePersonajes[4];
+                    return ListaDePersonajes[3];
 
                 case 5:
-                    return ListaDePersonajes[5];
+                    return ListaDePersonajes[4];
 
                 case 6:
-                    return ListaDePersonajes[6];
+                    return ListaDePersonajes[5];
 
                 case 7:
-                    return ListaDePersonajes[7];
+                    return ListaDePersonajes[6];
 
                 case 8:
-                    return ListaDePersonajes[8];
+                    return ListaDePersonajes[7];
 
                 case 9:
-                    return ListaDePersonajes[9];
+                    return ListaDePersonajes[8];
                     
 
                 default:

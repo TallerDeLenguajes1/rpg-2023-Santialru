@@ -46,7 +46,7 @@ namespace combate
                 break;
 
                 case 'C' or 'c':
-                Console.WriteLine(p1.Nombre+"Se ha CURADO");
+                Console.WriteLine(p1.Nombre+" Se ha CURADO");
                 if (p1.Salud + p1.Destreza*random.Next(1,5) > p1.SaludInicial) 
                 {
                     p1.Salud = p1.SaludInicial;
