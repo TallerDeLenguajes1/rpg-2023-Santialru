@@ -1,4 +1,3 @@
-using System;
 using System.Text.Json.Serialization;
 using System.Net;
 using System.Text.Json;
@@ -36,7 +35,6 @@ namespace Personaje
     {
         private string tipo;
         private string nombre;
-        // private string apodo;
         private DateTime fecha;
         private int edad;
         public int velocidad;
@@ -49,7 +47,6 @@ namespace Personaje
 
         public string Tipo { get => tipo; set => tipo = value; }
         public string Nombre { get => nombre; set => nombre = value; }
-        // public string Apodo { get => apodo; set => apodo = value; }
         public DateTime Fecha { get => fecha; set => fecha = value; }
         public int Edad { get => edad; set => edad = value; }
         public int Velocidad { get => velocidad; set => velocidad = value; }
@@ -172,9 +169,6 @@ namespace Personaje
             int.TryParse(Console.ReadLine(), out seleccionado);
             switch (seleccionado)
             {
-                case 0:
-                    return ListaDePersonajes[0];
-
                 case 1:
                     return ListaDePersonajes[1];
 
@@ -201,11 +195,29 @@ namespace Personaje
 
                 case 9:
                     return ListaDePersonajes[9];
+                    
 
                 default:
                     Console.WriteLine("No se ha seleccionado un personaje valido, intentelo nuevamente");
                     return Eleccion(ListaDePersonajes);
             }
+        }
+
+        public void MostrarCampeones(List<Perso> ListaCampeones)
+        {
+            Console.WriteLine("\nMostrar Lista de Campeones Pokemon (1:si / 2:no)");
+            int mostCamp;
+            int.TryParse(Console.ReadLine(), out mostCamp);
+                    
+            if (mostCamp == 1)
+            {
+                MostrarPersonajes(ListaCampeones);
+            }
+            else if (mostCamp != 1 && mostCamp != 2)
+            {
+                Console.WriteLine("No se ha seleccionado una opcion valida, intentelo nuevamente");
+                MostrarCampeones(ListaCampeones);
+            }    
         }
     }
 

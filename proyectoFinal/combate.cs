@@ -25,10 +25,16 @@ namespace combate
             Efectividad = random.Next(1,100);
             Defensa = p2.Armadura * p2.Velocidad;
             DanioProvocado = (((Ataque * Efectividad)-Defensa)/500);
+            
+            Console.WriteLine("-------NUEVO TURNO-------");
+            Console.WriteLine("---¡Es Turno de "+p1.Nombre+"!---");
+            Console.WriteLine(p1.Nombre);
+            Console.WriteLine("SALUD:" + p1.Salud);
             Console.WriteLine("Elija el sieguiente movimiento");
             Console.WriteLine("\"A\": Atacar");
             Console.WriteLine("\"C\": Curarse");
             Console.WriteLine("\"R\": Rendirse");
+            
             char movi = char.Parse(Console.ReadLine());
 
             switch (movi)

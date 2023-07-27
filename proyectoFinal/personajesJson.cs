@@ -1,6 +1,4 @@
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.IO;
 using Personaje;
 namespace usaJson
 {
@@ -41,6 +39,22 @@ namespace usaJson
             }
         }
 
+        public List<Perso> guardadoGanador(Perso player, List<Perso> listaGanadores)
+        {
+            string ArchivoGanadores = "ganadores.json";
+            if (Existe(ArchivoGanadores))
+            {
+                listaGanadores=LeerPersonajes(ArchivoGanadores);
+                listaGanadores.Add(player);
+                GuardarPersonajes(ArchivoGanadores, listaGanadores);
+            }
+            else
+            {
+                listaGanadores.Add(player);
+                GuardarPersonajes(ArchivoGanadores, listaGanadores);
+            }
+            return listaGanadores;
+        }
         
     }
 }
