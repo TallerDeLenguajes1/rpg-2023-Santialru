@@ -57,7 +57,7 @@ namespace combate
                 break;
 
                 case 'R' or 'r':
-                Console.WriteLine(p1.Nombre+"Se ha RENDIDO");
+                Console.WriteLine(p1.Nombre+" Se ha RENDIDO");
                 p1.Salud = 0;
                 break;
                 default:
